@@ -1,0 +1,4 @@
+export FLASK_APP=app.py
+export APP_SETTINGS=local
+export DATABASE_URL="postgresql+psycopg2://postgres:postgres@localhost:5432/user_mgr"
+export FLASK_ENV=development

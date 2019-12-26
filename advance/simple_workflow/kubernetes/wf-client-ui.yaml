@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: wf-client-ui
+  labels:
+    app: wf-client-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wf-client-ui
+  template:
+    metadata:
+      labels:
+        app: wf-client-ui
+    spec:
+      containers:
+        - name: wf-client-ui
+          image: delgemoon/clientui:1.0
+          ports:
+            - name: wf-client-ui
+              containerPort: 4200

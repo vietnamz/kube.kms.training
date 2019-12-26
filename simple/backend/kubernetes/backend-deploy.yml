@@ -1,0 +1,36 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: backend-deployment
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: backend-deployment
+    spec:
+      containers:
+      - name: backend
+        image: delgemoon/backend-sample:1.0
+        env:
+        - name: FLASK_APP
+          value: app.py
+        - name: APP_SETTINGS
+          value: local
+        - name: FLASK_ENV
+          value: development
+        - name: DATABASE_URL
+          valueFrom:
+              secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_HOST
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          valueFrom:
+              secretKeyRef:
+                  name: google-creds
+                  key: GOOGLE_APPLICATION_CREDENTIALS
+        ports:
+        - containerPort: 5000

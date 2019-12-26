@@ -1,0 +1,101 @@
+<h1>OT MANAGEMENT SYSTEM</h1>
+<div class="row">
+  <div class="col-sm-6">
+    <h5>User are logged as : {{currentUserName}}</h5>
+  </div>
+
+  <div class="col-sm-6">
+    <span>Relogin</span>
+    <select class="form-control" (change)="relogin($event.target.value)">
+      <option *ngFor="let user of users$ | async">{{user.userName}}</option>
+    </select>
+  </div>
+
+</div>
+
+
+
+<br/>
+<br/>
+<hr/>
+<br/>
+<br/>
+<div class="container">
+  <h3>Create OT Request</h3>
+  <form>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">For User</label>
+      <div class="col-sm-10">
+        <select class="form-control" (change)="onFieldChange('requestForUser', $event.target.value)">
+          <option *ngFor="let user of users$ | async">{{user.userName}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Total OT Days</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" value="{{form.numberOfRequestDays}}" (keyup)="onFieldChange('numberOfRequestDays', $event.target.value)"
+          placeholder="total of ot day for user">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Start Date</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" value="{{form.startDate}}" (keyup)="onFieldChange('startDate', $event.target.value)"
+          placeholder="start of ot date">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Comment</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" value="{{form.comment}}" (keyup)="onFieldChange('comment', $event.target.value)"
+          placeholder="start of ot date">
+      </div>
+    </div>
+
+    <div>
+      <button (click)="createRequest()" class="btn btn-primary">Request Now</button>
+    </div>
+  </form>
+</div>
+<br/>
+<br/>
+<hr/>
+<br/>
+<br/>
+<div class="container-fuild">
+  <h3>OT REQUEST LISTS</h3>
+  <p>List of request. Login as user can execute the command</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Request Id</th>
+        <th>Requester</th>
+        <th>For User</th>
+        <th>Total Day</th>
+        <th>Start Date</th>
+        <th>Comment</th>
+        <th>Current State</th>
+        <th>Last Update</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items$ | async">
+        <td>{{item.item.workflowId}}</td>
+        <td>{{item.item.requester}}</td>
+        <td>{{item.item.requestForUser}}</td>
+        <td>{{item.item.numberOfRequestDays}}</td>
+        <td>{{item.item.startDate}}</td>
+        <td>{{item.item.comment}}</td>
+        <td>{{item.wfItem.currentState}}</td>
+        <td>{{item.item.created}}</td>
+        <td>
+          <button class="btn btn-success" *ngFor="let commandName of item.wfItem.availableCommands"
+          (click)="executeCommand(item.item.workflowId, currentUserId, commandName)">{{commandName}} </button>
+          &ensp;
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  wf.document.api:
+    image: wfdocumentapi
+    build:
+      context: .
+      dockerfile: DocumentService\WF.Document.Api\Dockerfile
+
+  wf.server.api:
+    image: wfserverapi
+    build:
+      context: .
+      dockerfile: WorkflowService\WF.Server.Api\Dockerfile
+
+  wf.server.designer:
+    image: wfserverdesigner
+    build:
+      context: .
+      dockerfile: WorkflowService\WF.Server.Designer\Dockerfile

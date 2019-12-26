@@ -1,0 +1,9 @@
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Business/bin/Debug/netcoreapp2.0/WF.Server.Business.deps.json
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Business/bin/Debug/netcoreapp2.0/WF.Server.Business.dll
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Business/bin/Debug/netcoreapp2.0/WF.Server.Business.pdb
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Business/obj/Debug/netcoreapp2.0/WF.Server.Business.csprojAssemblyReference.cache
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Business/obj/Debug/netcoreapp2.0/WF.Server.Business.csproj.CoreCompileInputs.cache
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Business/obj/Debug/netcoreapp2.0/WF.Server.Business.AssemblyInfoInputs.cache
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Business/obj/Debug/netcoreapp2.0/WF.Server.Business.AssemblyInfo.cs
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Business/obj/Debug/netcoreapp2.0/WF.Server.Business.dll
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Business/obj/Debug/netcoreapp2.0/WF.Server.Business.pdb

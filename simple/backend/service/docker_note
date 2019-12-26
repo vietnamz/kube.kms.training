@@ -1,0 +1,46 @@
+
+requirements:
+
+docker-compose version 1.24.0
+Docker version 19.03.0-rc2
+Python 3.7.3
+psql 11.3
+
+Run:
+
+navigate to :
+
+services/writeapi
+
+source venv/bin/active to active the project
+
+pip install -r requirements
+
+export FLASK_APP=app.py
+export APP_SETTINGS=local
+export DATABASE_URL="postgresql+psycopg2://postgres:unDG8lDxcvyh9Jl2@localhost:5432/UserManagement"
+export FLASK_ENV=development
+
+run flask run
+
+
+Open another sell
+
+
+
+source venv/bin/active to active the project
+
+export FLASK_APP=app.py
+export APP_SETTINGS=local
+export DATABASE_URL="postgresql+psycopg2://postgres:unDG8lDxcvyh9Jl2@localhost:5432/user_mgr"
+export FLASK_ENV=development
+
+celery worker -A api.celery_instance --loglevel=info
+
+in order to check the postgresql
+
+psql "host=127.0.0.1 sslmode=disable dbname=user_mgr user=postgres"
+
+psql -h 127.0.0.1 -p 5432 -U postgres -d user_mgr
+
+select * from deparment

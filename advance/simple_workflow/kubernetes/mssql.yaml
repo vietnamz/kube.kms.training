@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  SQLSERVER_HOST: MTA0LjE5OC4yMDUuOCwxNDMz
+  SQLSERVER_SA_PASSWORD: V29yazRmdW4=
+kind: Secret
+metadata:
+  name: mssql
+type: Opaque

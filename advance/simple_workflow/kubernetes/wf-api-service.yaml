@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:  
+  name: wf-api-service
+spec:
+  selector:    
+    app: wf-api
+  ports:  
+  - name: http
+    port: 61511
+    targetPort: 61511
+    protocol: TCP

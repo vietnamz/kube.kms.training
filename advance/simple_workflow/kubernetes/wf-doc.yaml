@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: wf-doc
+  labels:
+    app: wf-doc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wf-doc
+  template:
+    metadata:
+      labels:
+        app: wf-doc
+    spec:
+      containers:
+        - name: wf-doc
+          image: delgemoon/wf_doc:1.0
+          env:
+            - name: WorkflowServerUrl
+              value: "http://wf-api-service.default.svc.cluster.local:61511"
+            - name: SQLSERVER_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: mssql-host
+                  key: SQLSERVER_HOST
+            - name: SQLSERVER_SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mssql
+                  key: SQLSERVER_SA_PASSWORD
+          ports:
+            - name: wf-doc
+              containerPort: 62001

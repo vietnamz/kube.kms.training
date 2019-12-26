@@ -1,0 +1,119 @@
+pipeline {
+    agent {
+        docker { image 'vietnamz-stage.io/skeleton-jenkins-py:latest' }
+    }
+    environment {
+        PATH = "$PATH:/var/lib/$USER/.local/bin"
+        GIT_REPO = sh(
+            script: "git config --get remote.origin.url",
+            returnStdout: true
+        ).trim()
+    }
+    options {
+      ansiColor('xterm')
+    }
+    stages {
+        stage('Install Dependencies') {
+            steps {
+                sh 'make setup'
+            }
+        }
+        stage('Run Unit Tests') {
+            steps {
+                sh 'make test'
+            }
+        }
+        stage('Run Type Hint Analysis') {
+            steps {
+                sh 'make hints'
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('default') {
+                    sh 'make service=research analyze'
+                }
+            }
+        }
+        stage('SonarQube Quality Gate') {
+            when {
+                branch 'master'
+            }
+            steps {
+                waitForQualityGate true
+            }
+        }
+        stage('Build/Push Docker Image') {
+            when {
+                branch 'master'
+            }
+            steps {
+                script {
+                    build job: '/sre-team/Docker Image Building/Docker Image Build', parameters: [
+                        [$class: 'StringParameterValue', name: 'GIT_REPO', value: env.GIT_REPO],
+                        [$class: 'StringParameterValue', name: 'GIT_BRANCH', value: 'master'],
+                    ]
+                }
+            }
+        }
+        stage('Deploy to Dev') {
+            when {
+                branch 'master'
+            }
+            steps {
+                kubeconfigInstall('dev')
+                sh 'make kubeconfig artifact=research'
+            }
+        }
+        stage('Dev Integration Tests') {
+            when {
+                branch 'master'
+            }
+            steps {
+                sh 'make testintegration'
+            }
+        }
+        stage('Deploy to Prod') {
+            when {
+                branch 'master'
+            }
+            steps {
+                kubeconfigInstall('prod')
+                sh 'make deploy artifact=research'
+            }
+        }
+    }
+    post {
+      always {
+        publishHTML (target: [
+        allowMissing: false,
+        alwaysLinkToLastBuild: false,
+        keepAll: true,
+        reportDir: 'htmlcov',
+        reportFiles: 'index.html',
+        reportName: "Coverage Report"
+      ])
+        publishHTML (target: [
+        allowMissing: false,
+        alwaysLinkToLastBuild: false,
+        keepAll: true,
+        reportDir: 'typecov',
+        reportFiles: 'index.html',
+        reportName: "Type Hinting Report"
+      ])
+        deleteDir()
+      }
+      success {
+         slackSend(channel: '#jenkins',
+            color: 'good',
+            message: "Research service success: ${env.BUILD_URL}"
+         )
+      }
+      failure {
+         slackSend(channel: '#jenkins',
+            color: 'bad',
+            message: "Research service build failure: ${env.BUILD_URL}"
+         )
+      }
+   }
+}

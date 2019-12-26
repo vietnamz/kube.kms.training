@@ -1,0 +1,25 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: delgemoon/frontend-sample:1.0
+        env:
+        - name: CONFIG
+          valueFrom:
+            secretKeyRef:
+                name: app-config
+                key: APP_CONFIG    
+        ports:
+        - containerPort: 80

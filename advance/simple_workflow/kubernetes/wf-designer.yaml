@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: wf-designer
+  labels:
+    app: wf-designer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wf-designer
+  template:
+    metadata:
+      labels:
+        app: wf-designer
+    spec:
+      containers:
+        - name: wf-designer
+          image: delgemoon/wf_designer:1.0
+          env:
+            - name: SQLSERVER_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: mssql-host
+                  key: SQLSERVER_HOST
+            - name: SQLSERVER_SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mssql
+                  key: SQLSERVER_SA_PASSWORD
+          ports:
+            - name: wf-designer
+              containerPort: 18098

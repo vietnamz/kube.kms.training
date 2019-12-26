@@ -1,0 +1,14 @@
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Designer/bin/Debug/netcoreapp2.0/WF.Server.Designer.deps.json
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Designer/bin/Debug/netcoreapp2.0/WF.Server.Designer.runtimeconfig.json
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Designer/bin/Debug/netcoreapp2.0/WF.Server.Designer.runtimeconfig.dev.json
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Designer/bin/Debug/netcoreapp2.0/WF.Server.Designer.dll
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Designer/bin/Debug/netcoreapp2.0/WF.Server.Designer.pdb
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Designer/bin/Debug/netcoreapp2.0/WF.Server.Business.dll
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Designer/bin/Debug/netcoreapp2.0/WF.Server.Business.pdb
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Designer/obj/Debug/netcoreapp2.0/WF.Server.Designer.csprojAssemblyReference.cache
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Designer/obj/Debug/netcoreapp2.0/WF.Server.Designer.csproj.CoreCompileInputs.cache
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Designer/obj/Debug/netcoreapp2.0/WF.Server.Designer.AssemblyInfoInputs.cache
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Designer/obj/Debug/netcoreapp2.0/WF.Server.Designer.AssemblyInfo.cs
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Designer/obj/Debug/netcoreapp2.0/WF.Server.Designer.csproj.CopyComplete
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Designer/obj/Debug/netcoreapp2.0/WF.Server.Designer.dll
+/Users/delgemoon/workspace/nuerobase/neurobase_back_end/simple_workflow/WorkflowService/WF.Server.Designer/obj/Debug/netcoreapp2.0/WF.Server.Designer.pdb

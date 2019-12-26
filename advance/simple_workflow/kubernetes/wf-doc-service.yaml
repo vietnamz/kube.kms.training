@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:  
+  name: wf-doc-service
+spec:
+  selector:    
+    app: wf-doc
+  type: LoadBalancer
+  loadBalancerIP: 52.88.161.170
+  ports:  
+  - name: http
+    port: 62001
+    targetPort: 62001
+    protocol: TCP

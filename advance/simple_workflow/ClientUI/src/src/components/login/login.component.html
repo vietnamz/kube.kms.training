@@ -1,0 +1,26 @@
+<div class="container pt-3">
+  <div class="row justify-content-sm-center">
+    <div class="col-sm-6 col-md-4">
+
+      <div class="card border-info text-center">
+        <div class="card-header">
+          Sign in to continue
+        </div>
+        <div class="card-body">
+          <h4 class="text-center">WF.FPT Mock Login</h4>
+          <form class="form-signin">
+            <input type="text" class="form-control mb-2" placeholder="User" value="{{username$ | async}}" (keyup)="onFieldChange('username', $event.target.value)" required autofocus>
+            <input type="password" class="form-control mb-2" placeholder="Password" (keyup)="onFieldChange('password', $event.target.value)" required>
+            <button class="btn btn-lg btn-primary btn-block mb-1" type="submit" (click)="doLogin()">Sign in</button>
+            <label class="checkbox float-left">
+              <input type="checkbox" value="remember-me">
+              Remember me
+            </label>
+            <a href="#" class="float-right">{{testCounter$ | async}}Need help?</a>
+          </form>
+        </div>
+      </div>
+      <a href="#" class="float-right">Create an account </a>
+    </div>
+  </div>
+</div>
