@@ -1,20 +1,27 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: backend
 spec:
   selector:
     matchLabels:
-      app: backend-deployment
+      app: backend
   replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
-        app: backend-deployment
+        app: backend
     spec:
+      volumes:
+      - name: secret-cred
+        secret:
+            secretName: google-secret
       containers:
       - name: backend
         image: delgemoon/backend-sample:1.0
+        volumeMounts:
+        - name: secret-cred
+          mountPath: "/tmp/data"
         env:
         - name: FLASK_APP
           value: app.py
@@ -28,9 +35,6 @@ spec:
                   name: postgres-secret
                   key: POSTGRES_HOST
         - name: GOOGLE_APPLICATION_CREDENTIALS
-          valueFrom:
-              secretKeyRef:
-                  name: google-creds
-                  key: GOOGLE_APPLICATION_CREDENTIALS
+          value: "/tmp/data/firebase.json" 
         ports:
         - containerPort: 5000

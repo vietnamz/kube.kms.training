@@ -1,7 +1,7 @@
 <template>
   <v-img
     height="48" 
-    src="/v.jpg"
+    src="/v.png"
     alt="connectome.design"
     contain
     max-height="48"

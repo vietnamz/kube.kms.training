@@ -2,6 +2,8 @@
 
 > Nuxt.js project
 
+
+The first step is to copy the env.example to .env
 ## Build Setup
 
 ``` bash

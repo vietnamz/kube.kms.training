@@ -12,14 +12,15 @@ spec:
       labels:
         app: frontend
     spec:
+      volumes:
+      - name: secret-volume
+        secret:
+            secretName: env-secret
       containers:
       - name: frontend
-        image: delgemoon/frontend-sample:1.0
-        env:
-        - name: CONFIG
-          valueFrom:
-            secretKeyRef:
-                name: app-config
-                key: APP_CONFIG    
+        image: delgemoon/frontend:1.0 
+        volumeMounts:
+        - name: secret-volume
+          mountPath: "/code"   
         ports:
         - containerPort: 80
