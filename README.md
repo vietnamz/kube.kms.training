@@ -76,8 +76,25 @@ postgres     NodePort    10.96.115.22   <none>        5432:31496/TCP   13m
 |-----------|---------|-------------|---------------------------|
 
 
-    + nagivating to frontend dir -> kubernetes dir.
+    + nagivating to frontend dir -> kubernetes dir. Since we cannot get the IP and port of backend in advance, so we have to rebuild the docker image as below.
+        + Please take note the ip address and port of backend as a example above.
+        + modify the file .env in frontend dir as blow, if the .env doesn't exist, pls copy env.example to .env and modify it:
+        + modify the axios api host and port to the backend ip and port accordingly.
+                AXIOS_API_HOST=192.168.64.5
+                AXIOS_API_PORT=32724
+                AXIOS_API_PREFIX=/
+        + from the top of frontend dir. Run the command below:
+            docker build -t delgemoon/backend-sample:1.0
+            docker push delgemoon/backend-sample:1.0 # you must login to docker hub before performing this step.
+            + note that: you must create a dockerhub account and replace delgemoon to your account. for the rest you can name it as you want. But you have to replace the docker image in  frontend.yml to yours. Since your image already exists in your local, the minikube will get the local instead, but highly recommend you push to the dockerhub, to understand the flow.
+        
+        + Navigating to kubernetes dir:
+            + kubectl create -f frontend.yml
+            + kubectl create -f frontend-svc.yml
 
 
+
+
+# In order to run advance sample, you should have an aws account and deploy the app to eks. Please feel free to ask me via skype: tam.dang90
 
         
