@@ -1,26 +1,26 @@
 # requirements:
 
-minikube
-docker-compose
-Docker
-Python 
-psql
-nodejs
-yarn
+- minikube
+- docker-compose
+- Docker
+- Python 
+- psql
+- nodejs
+- yarn
 # firebase account:
 
-mail : kube.kms.traning@gmail.com
-pass: @123456@
++ mail : kube.kms.traning@gmail.com
++ pass: @123456@
 
 You can access into firebase and verify user authentication.
 
 # Basis minikube command
 
-minikube start: start a new kubernetes cluster
-minikube stop: stop using kubernetes session
-minikube delete: delete kubernetes cluster
-minikube ssh: access into kubernetes host
-minikube service [service_name]: open a service 
++ minikube start: start a new kubernetes cluster
++ minikube stop: stop using kubernetes session
++ minikube delete: delete kubernetes cluster
++ minikube ssh: access into kubernetes host
++ minikube service [service_name]: open a service 
 
 
 # Deploying the simple app
@@ -58,7 +58,7 @@ postgres     NodePort    10.96.115.22   <none>        5432:31496/TCP   3s
 
         + Deploy the backend service
             + kubectl create secret generic postgres-secret --from-literal=POSTGRES_HOST="postgresql+psycopg2://postgres:postgres@postgres.default.svc.cluster.local:5432/user_mgr"
-            + kubectl create secret generic google-creds --from-file=GOOGLE_APPLICATION_CREDENTIALS=../service/firebase.json
+            + kubectl create secret generic google-secret --from-file=firebase.json=../service/firebase.json
             + kubectl create -f backend-deploy.yml
             + kubectl create -f backend-svc.yml
             + now, you can access into the backend swagger via http://192.168.64.5:31063/docs
@@ -95,6 +95,6 @@ postgres     NodePort    10.96.115.22   <none>        5432:31496/TCP   13m
 
 
 
-# In order to run advance sample, you should have an aws account and deploy the app to eks. Please feel free to ask me via skype: tam.dang90
+### In order to run advance sample, you should have an aws account and deploy the app to EKS.
 
         
